@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 67197114b50328a478b8544f86aa4613
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 7400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 194727
+  packageName: Pixelate
+  packageVersion: 1.04
+  assetPath: Assets/Pixelate/DEMO/Animations/2D/Running2D.anim
+  uploadId: 601125

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b12018890c736844f9a88e889c2a99db
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 194727
+  packageName: Pixelate
+  packageVersion: 1.04
+  assetPath: Assets/Pixelate/DEMO/Models/Character/Materials/URP.mat
+  uploadId: 601125
