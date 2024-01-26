@@ -1016,6 +1016,7 @@ GameObject:
   - component: {fileID: 176893456}
   - component: {fileID: 176893455}
   - component: {fileID: 176893458}
+  - component: {fileID: 176893459}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1149,6 +1150,39 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &176893459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176893452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 1
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1 &209848285
 GameObject:
   m_ObjectHideFlags: 0
@@ -2750,7 +2784,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 691370762}
-  - component: {fileID: 691370761}
+  - component: {fileID: 691370763}
   m_Layer: 0
   m_Name: Volume
   m_TagString: Untagged
@@ -2758,23 +2792,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &691370761
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 691370760}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: dab9d5d1d5d66064eaa71f23243fa544, type: 2}
-  isGlobal: 1
-  blendDistance: 0
-  weight: 1
-  priority: 0
 --- !u!4 &691370762
 Transform:
   m_ObjectHideFlags: 0
@@ -2790,6 +2807,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &691370763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691370760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 1e0f390c86f9ac5418a6baadedf4505c, type: 2}
 --- !u!1 &697129129
 GameObject:
   m_ObjectHideFlags: 0
@@ -4317,6 +4351,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1352066398}
   - component: {fileID: 1352066397}
+  - component: {fileID: 1352066399}
   m_Layer: 0
   m_Name: Main Light
   m_TagString: Untagged
@@ -4401,6 +4436,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 26.925, y: 206.923, z: -83.662}
+--- !u!114 &1352066399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352066395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 1
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
 --- !u!1 &1370046080
 GameObject:
   m_ObjectHideFlags: 0
@@ -4975,7 +5030,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_FakeLoadTime: 0
   m_MaleItems:
-    m_BaseBody: {fileID: 3172258966209387761, guid: c2ed88dc23a0ad74cb8a33a1e870e92a, type: 3}
+    m_BaseBody: {fileID: 3172258966209387761, guid: c2ed88dc23a0ad74cb8a33a1e870e92a,
+      type: 3}
     m_Heads:
     - {fileID: 11400000, guid: 91c5cfca57d515249b054aabbc80e3dd, type: 2}
     - {fileID: 11400000, guid: 7a78f363742c2d74eabaf3733c4dbf22, type: 2}
@@ -5039,7 +5095,8 @@ MonoBehaviour:
     - {fileID: 11400000, guid: f6b4633c3120a4a4fa0ed2e242d77b0a, type: 2}
     - {fileID: 11400000, guid: 18c851dfe17892340b03a405eae2dad0, type: 2}
   m_FemaleItems:
-    m_BaseBody: {fileID: 4402282199760130520, guid: 3cc386d87b27539409599beb42d93335, type: 3}
+    m_BaseBody: {fileID: 4402282199760130520, guid: 3cc386d87b27539409599beb42d93335,
+      type: 3}
     m_Heads:
     - {fileID: 11400000, guid: 61e7010fd905b8246b21c414dda8132c, type: 2}
     - {fileID: 11400000, guid: 6aecdc6566888c546973cbc39da1395b, type: 2}
