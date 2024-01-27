@@ -28,11 +28,13 @@ namespace Assets.Scripts
 			{
 				if (positives.Contains(action))
 				{
-					score++;
+					if (score != 1)
+						score++;
 				}
 				else if (negatives.Contains(action))
 				{
-					score--;
+					if (score != -1)
+						score--;
 				}
 			}
 
