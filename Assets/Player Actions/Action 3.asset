@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 019771bf741e1194ebea7f9300c18c66, type: 3}
   m_Name: Action 3
   m_EditorClassIdentifier: 
-  animation: {fileID: 0}
-  playerActionTypes: 03000000
+  animationString: doTeabag
+  icon: {fileID: -4129041442308449352, guid: b947ff45fc01f8a4b8458ab61ed8f0b4, type: 3}
+  playerActionTypes: 02000000
