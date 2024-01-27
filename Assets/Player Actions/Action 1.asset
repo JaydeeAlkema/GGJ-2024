@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Action 1
   m_EditorClassIdentifier: 
   animationString: doDance
-  icon: {fileID: 5044124483992705184, guid: 1226fe5265257de419d5d1617f9d549b, type: 3}
+  icon: {fileID: 6472981692964810502, guid: 7fee9e18071c0104b80e5587d4f0a9ec, type: 3}
   playerActionTypes: 00000000
