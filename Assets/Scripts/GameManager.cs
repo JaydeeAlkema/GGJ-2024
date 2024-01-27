@@ -3,18 +3,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Assets.Scripts
 {
 	public class GameManager : MonoBehaviour
 	{
 		[SerializeField, BoxGroup("References"), Expandable] private PlayerAction[] actions = null;
-		[SerializeField, BoxGroup("References")] private CrowdMember[] crowdMembers = null;
+		[SerializeField, BoxGroup("References")] private LevelData[] levels = null;
 		[SerializeField, BoxGroup("References")] private MoveFrame[] moveFrames = null;
 		[SerializeField, BoxGroup("References")] private Ducky ducky = null;
 		[SerializeField, BoxGroup("References")] private Animator photoCameraAnimator = null;
 		[Space]
+		[SerializeField, BoxGroup("Runtime")] private int currentLevel = 0;
 		[SerializeField, BoxGroup("Runtime"), Expandable] private List<PlayerAction> actionsQueue = new();
 		[SerializeField, BoxGroup("Runtime")] private int currentActionQueueIndex = 0;
 		[SerializeField, BoxGroup("Runtime")] private bool canInputActions = true;
@@ -48,6 +48,7 @@ namespace Assets.Scripts
 		private void Start()
 		{
 			SetNextMoveFrameAsSelected();
+			NextLevel();
 		}
 
 		private void OnEnable()
@@ -79,6 +80,7 @@ namespace Assets.Scripts
 			currentActionQueueIndex++;
 			SetNextMoveFrameAsSelected();
 			TestSequence();
+
 			if (currentActionQueueIndex >= maxActionsInQueue || AllCrowdMembersAreHappy())
 			{
 				PrintActionsQueue();
@@ -87,6 +89,7 @@ namespace Assets.Scripts
 				yield return new WaitForSeconds(photoCameraAnimator.GetCurrentAnimatorClipInfo(0).Length + 1f);
 				currentActionQueueIndex = 0;
 				actionsQueue.Clear();
+				if (AllCrowdMembersAreHappy()) NextLevel();
 				ResetCrowdMembers();
 				ResetIcons();
 			}
@@ -100,8 +103,6 @@ namespace Assets.Scripts
 		{
 			moveFrames[currentActionQueueIndex].SetIcon(actionsQueue[^1].GetIcon());
 		}
-
-		// Method that always sets the next move frame as selected and all the other move frames as unselected
 		private void SetNextMoveFrameAsSelected()
 		{
 			foreach (MoveFrame iconHolder in moveFrames)
@@ -115,7 +116,6 @@ namespace Assets.Scripts
 				else moveFrames[currentActionQueueIndex].SetAsSelected();
 			}
 		}
-
 		private void ResetIcons()
 		{
 			foreach (MoveFrame iconHolder in moveFrames)
@@ -125,7 +125,6 @@ namespace Assets.Scripts
 			}
 			SetNextMoveFrameAsSelected();
 		}
-
 		private void TestSequence()
 		{
 			SetupCrowdMembers();
@@ -137,7 +136,7 @@ namespace Assets.Scripts
 		{
 			foreach (PlayerAction playerAction in actionsQueue)
 			{
-				foreach (CrowdMember crowdMember in crowdMembers)
+				foreach (CrowdMember crowdMember in levels[currentLevel].crowdMembers)
 				{
 					OnAction += () => crowdMember.CheckPossitivesAndNegatives(playerAction.PlayerActionTypes);
 				}
@@ -145,7 +144,7 @@ namespace Assets.Scripts
 		}
 		private void ResetCrowdMembers()
 		{
-			foreach (CrowdMember crowdMember in crowdMembers)
+			foreach (CrowdMember crowdMember in levels[currentLevel].crowdMembers)
 			{
 				crowdMember.SetScore(0);
 				crowdMember.ResetFaceToNeutral();
@@ -155,7 +154,7 @@ namespace Assets.Scripts
 		private void GetFinalStatesOfCrowdMembers()
 		{
 			string text = "";
-			foreach (CrowdMember crowdMember in crowdMembers)
+			foreach (CrowdMember crowdMember in levels[currentLevel].crowdMembers)
 			{
 				text += $"[ {crowdMember.gameObject.name}: {crowdMember.GetScore()} ]";
 			}
@@ -165,7 +164,7 @@ namespace Assets.Scripts
 		private bool AllCrowdMembersAreHappy()
 		{
 			bool allGood = true;
-			foreach (CrowdMember crowdMember in crowdMembers)
+			foreach (CrowdMember crowdMember in levels[currentLevel].crowdMembers)
 			{
 				if (crowdMember.GetScore() <= 0) allGood = false;
 			}
@@ -180,5 +179,40 @@ namespace Assets.Scripts
 			}
 			Debug.Log($"Actions queue: {text}", this);
 		}
+		private void NextLevel()
+		{
+			SetNextMoveFrameAsSelected();
+			currentLevel++;
+			if (currentLevel >= levels.Length)
+			{
+				currentLevel--;
+				ResetGame();
+				return;
+			}
+
+			for (int i = 0; i < levels.Length; i++)
+			{
+				LevelData levelData = levels[i];
+				if (i == currentLevel) levelData.crowdParent.SetActive(true);
+				else levelData.crowdParent.SetActive(false);
+			}
+		}
+		private void ResetGame()
+		{
+			actionsQueue.Clear();
+			currentActionQueueIndex = 0;
+			ResetCrowdMembers();
+			ResetIcons();
+			currentLevel = -1;
+			NextLevel();
+		}
+	}
+
+	[Serializable]
+	public struct LevelData
+	{
+		public GameObject crowdParent;
+		public CrowdMember[] crowdMembers;
+		public float timeToCompleet;
 	}
 }
