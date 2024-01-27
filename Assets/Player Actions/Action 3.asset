@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Action 3
   m_EditorClassIdentifier: 
   animation: {fileID: 0}
-  playerActionTypes: 03000000
+  playerActionTypes: 02000000
