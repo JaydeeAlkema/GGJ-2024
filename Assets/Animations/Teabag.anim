@@ -127,10 +127,10 @@ AnimationClip:
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
-        time: 0.9583333
-        value: {x: 0, y: -0.05, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
+        time: 1
+        value: {x: 0, y: 0, z: 0}
+        inSlope: {x: 0, y: Infinity, z: 0}
+        outSlope: {x: 0, y: Infinity, z: 0}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
@@ -170,6 +170,8 @@ AnimationClip:
       value: {fileID: -4129041442308449352, guid: b947ff45fc01f8a4b8458ab61ed8f0b4, type: 3}
     - time: 0.9583333
       value: {fileID: -4129041442308449352, guid: b947ff45fc01f8a4b8458ab61ed8f0b4, type: 3}
+    - time: 1
+      value: {fileID: 8793639957104055765, guid: d529f2af710daa94f9851b2bb79ddc55, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -214,12 +216,13 @@ AnimationClip:
     - {fileID: 8793639957104055765, guid: d529f2af710daa94f9851b2bb79ddc55, type: 3}
     - {fileID: -4129041442308449352, guid: b947ff45fc01f8a4b8458ab61ed8f0b4, type: 3}
     - {fileID: -4129041442308449352, guid: b947ff45fc01f8a4b8458ab61ed8f0b4, type: 3}
+    - {fileID: 8793639957104055765, guid: d529f2af710daa94f9851b2bb79ddc55, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1
+    m_StopTime: 1.0416666
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -348,11 +351,11 @@ AnimationClip:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.9583333
-        value: -0.05
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
+        time: 1
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
@@ -367,4 +370,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 1
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0
+    functionName: PlaySFX
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 3
+    messageOptions: 0
