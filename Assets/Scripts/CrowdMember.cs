@@ -35,7 +35,7 @@ namespace Assets.Scripts
 
 		public void CheckPossitivesAndNegatives(List<PlayerActionType> actions)
 		{
-			ResetFaces();
+			ResetMoodIndicators();
 			int oldScore = currentScore;
 			foreach (PlayerActionType action in actions)
 			{
@@ -74,10 +74,8 @@ namespace Assets.Scripts
 			else if (currentScore < 0) spriteRenderer.sprite = negativeFaces[UnityEngine.Random.Range(0, negativeFaces.Count)];
 			else spriteRenderer.sprite = neutralFaces[UnityEngine.Random.Range(0, neutralFaces.Count)];
 		}
-		public void ResetFaces()
+		public void ResetMoodIndicators()
 		{
-			SetFacesToCurrentScore();
-			//spriteRenderer.sprite = neutralFaces[UnityEngine.Random.Range(0, neutralFaces.Count)];
 			positiveArrowGameObject.SetActive(false);
 			neutralArrowGameObject.SetActive(false);
 			negativeArrowGameObject.SetActive(false);

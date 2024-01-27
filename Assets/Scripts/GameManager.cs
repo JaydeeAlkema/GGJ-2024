@@ -158,6 +158,7 @@ namespace Assets.Scripts
 			{
 				crowdMember.SetScore(crowdMember.GetDefaultScore());
 				crowdMember.SetFacesToCurrentScore();
+				crowdMember.ResetMoodIndicators();
 			}
 			Debug.Log("Crowd members reseted", this);
 		}
