@@ -2,6 +2,7 @@ using NaughtyAttributes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -14,11 +15,17 @@ namespace Assets.Scripts
 		[SerializeField, BoxGroup("References")] private Ducky ducky = null;
 		[SerializeField, BoxGroup("References")] private Animator photoCameraAnimator = null;
 		[SerializeField, BoxGroup("References")] private Animator photoCameraFlashAnimator = null;
+		[SerializeField, BoxGroup("References")] private GameObject scoreTextAnchor = null;
+		[SerializeField, BoxGroup("References")] private TextMeshProUGUI scoreTextElement = null;
+		[SerializeField, BoxGroup("References")] private TextMeshProUGUI levelTextElement = null;
 		[Space]
 		[SerializeField, BoxGroup("Runtime")] private int currentLevel = 0;
 		[SerializeField, BoxGroup("Runtime"), Expandable] private List<PlayerAction> actionsQueue = new();
 		[SerializeField, BoxGroup("Runtime")] private int currentActionQueueIndex = 0;
 		[SerializeField, BoxGroup("Runtime")] private bool canInputActions = true;
+		[SerializeField, BoxGroup("Runtime")] private float currentLevelTimer = 0;
+		[SerializeField, BoxGroup("Runtime")] private bool isCountingDown = true;
+		[SerializeField, BoxGroup("Runtime")] private int score = 0;
 		[Space]
 		[SerializeField, BoxGroup("Settings")] private int maxActionsInQueue = 4;
 		[Space]
@@ -50,6 +57,17 @@ namespace Assets.Scripts
 		{
 			SetNextMoveFrameAsSelected();
 			NextLevel();
+		}
+
+		private void Update()
+		{
+			if (currentLevel >= levels.Length || !isCountingDown) return;
+			currentLevelTimer -= Time.deltaTime;
+			if (currentLevelTimer < 0)
+			{
+				currentLevelTimer = 0;
+				ResetGame();
+			}
 		}
 
 		private void OnEnable()
@@ -84,13 +102,18 @@ namespace Assets.Scripts
 
 			if (currentActionQueueIndex >= maxActionsInQueue || AllCrowdMembersAreHappy())
 			{
+				int scoreMultiplier = (int)currentLevelTimer;
+				if (AllCrowdMembersAreHappy()) isCountingDown = false;
 				PrintActionsQueue();
 				yield return new WaitForSeconds(ducky.GetAnimator().GetCurrentAnimatorClipInfo(0).Length + 0.35f);
 				if (AllCrowdMembersAreHappy())
 				{
+					scoreTextAnchor.SetActive(true);
+					score += 10 * scoreMultiplier;
+					scoreTextElement.text = $"Score: {score}";
 					photoCameraAnimator.SetTrigger("doSnapCamera");
 					photoCameraFlashAnimator.SetTrigger("doFlash");
-					yield return new WaitForSeconds(photoCameraAnimator.GetCurrentAnimatorClipInfo(0).Length + 1f);
+					yield return new WaitForSeconds(photoCameraAnimator.GetCurrentAnimatorClipInfo(0).Length + 5f);
 				}
 				else
 				{
@@ -201,6 +224,10 @@ namespace Assets.Scripts
 				ResetGame();
 				return;
 			}
+			scoreTextAnchor.SetActive(false);
+			currentLevelTimer = levels[currentLevel].timeToCompleet;
+			isCountingDown = true;
+			levelTextElement.text = $"Level: {currentLevel + 1}";
 
 			for (int i = 0; i < levels.Length; i++)
 			{
@@ -208,6 +235,7 @@ namespace Assets.Scripts
 				if (i == currentLevel) levelData.crowdParent.SetActive(true);
 				else levelData.crowdParent.SetActive(false);
 			}
+			score = 0;
 		}
 		private void ResetGame()
 		{
