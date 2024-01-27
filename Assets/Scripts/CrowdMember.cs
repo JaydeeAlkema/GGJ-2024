@@ -19,24 +19,31 @@ namespace Assets.Scripts
 		[SerializeField, BoxGroup("References")] private GameObject neutralArrowGameObject = null;
 		[SerializeField, BoxGroup("References")] private GameObject negativeArrowGameObject = null;
 		[Space]
-		[SerializeField, BoxGroup("Runtime")] private int score = 0;
+		[SerializeField, BoxGroup("Runtime")] private int defaultScore = 0;
+		[SerializeField, BoxGroup("Runtime")] private int currentScore = 0;
 		[Space]
 		[SerializeField, BoxGroup("Debugging")] private bool printScores = false;
 
-		public int GetScore() => score;
-		public void SetScore(int value) => score = value;
+		public int GetScore() => currentScore;
+		public int GetDefaultScore() => defaultScore;
+		public void SetScore(int value) => currentScore = value;
+
+		void OnEnable()
+		{
+			currentScore = defaultScore;
+		}
 
 		public void CheckPossitivesAndNegatives(List<PlayerActionType> actions)
 		{
-			ResetFaceToNeutral();
-			int oldScore = score;
+			ResetFaces();
+			int oldScore = currentScore;
 			foreach (PlayerActionType action in actions)
 			{
 				if (positives.Contains(action))
 				{
-					if (score != 1)
+					if (currentScore != 1)
 					{
-						score++;
+						currentScore++;
 						positiveArrowGameObject.SetActive(true);
 						neutralArrowGameObject.SetActive(false);
 						negativeArrowGameObject.SetActive(false);
@@ -44,9 +51,9 @@ namespace Assets.Scripts
 				}
 				else if (negatives.Contains(action))
 				{
-					if (score != -1)
+					if (currentScore != -1)
 					{
-						score--;
+						currentScore--;
 						positiveArrowGameObject.SetActive(false);
 						neutralArrowGameObject.SetActive(false);
 						negativeArrowGameObject.SetActive(true);
@@ -54,17 +61,23 @@ namespace Assets.Scripts
 				}
 			}
 
-			if (oldScore == score) neutralArrowGameObject.SetActive(true);
+			if (oldScore == currentScore) neutralArrowGameObject.SetActive(true);
 
-			if (printScores) Debug.Log($"Checking positives and negatives at {gameObject.name} - Score: {score}", this);
+			if (printScores) Debug.Log($"Checking positives and negatives at {gameObject.name} - Score: {currentScore}", this);
 
-			if (score > 0) spriteRenderer.sprite = positiveFaces[UnityEngine.Random.Range(0, positiveFaces.Count)];
-			else if (score < 0) spriteRenderer.sprite = negativeFaces[UnityEngine.Random.Range(0, negativeFaces.Count)];
+			SetFacesToCurrentScore();
+		}
+
+		public void SetFacesToCurrentScore()
+		{
+			if (currentScore > 0) spriteRenderer.sprite = positiveFaces[UnityEngine.Random.Range(0, positiveFaces.Count)];
+			else if (currentScore < 0) spriteRenderer.sprite = negativeFaces[UnityEngine.Random.Range(0, negativeFaces.Count)];
 			else spriteRenderer.sprite = neutralFaces[UnityEngine.Random.Range(0, neutralFaces.Count)];
 		}
-		public void ResetFaceToNeutral()
+		public void ResetFaces()
 		{
-			spriteRenderer.sprite = neutralFaces[UnityEngine.Random.Range(0, neutralFaces.Count)];
+			SetFacesToCurrentScore();
+			//spriteRenderer.sprite = neutralFaces[UnityEngine.Random.Range(0, neutralFaces.Count)];
 			positiveArrowGameObject.SetActive(false);
 			neutralArrowGameObject.SetActive(false);
 			negativeArrowGameObject.SetActive(false);
