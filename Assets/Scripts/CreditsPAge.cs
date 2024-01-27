@@ -1,14 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class CreditsPAge : MonoBehaviour
+namespace Assets.Scripts
 {
-	private Controls controls;
-
-	private void Awake()
+	public class CreditsPage : MonoBehaviour
 	{
-		controls = new Controls();
-		controls.Enable();
+		private Controls controls;
+
+		private void Awake()
+		{
+			controls = new Controls();
+			controls.Enable();
+
+			controls.UI.Escape.performed += ctx => Back();
+		}
+
+		private void Back()
+		{
+			SceneManager.LoadScene("MainMenu");
+		}
 	}
 }
