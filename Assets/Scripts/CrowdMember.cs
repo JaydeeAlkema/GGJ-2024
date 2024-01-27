@@ -19,6 +19,10 @@ namespace Assets.Scripts
 		[SerializeField, BoxGroup("References")] private GameObject neutralArrowGameObject = null;
 		[SerializeField, BoxGroup("References")] private GameObject negativeArrowGameObject = null;
 		[Space]
+		[SerializeField, BoxGroup("References")] private GameObject happyFaceIcon = null;
+		[SerializeField, BoxGroup("References")] private GameObject neutralFaceIcon = null;
+		[SerializeField, BoxGroup("References")] private GameObject cringeFaceIcon = null;
+		[Space]
 		[SerializeField, BoxGroup("Runtime")] private int defaultScore = 0;
 		[SerializeField, BoxGroup("Runtime")] private int currentScore = 0;
 		[Space]
@@ -36,6 +40,7 @@ namespace Assets.Scripts
 		public void CheckPossitivesAndNegatives(List<PlayerActionType> actions)
 		{
 			ResetMoodIndicators();
+			ResetEmoticons();
 			int oldScore = currentScore;
 			foreach (PlayerActionType action in actions)
 			{
@@ -79,6 +84,20 @@ namespace Assets.Scripts
 			positiveArrowGameObject.SetActive(false);
 			neutralArrowGameObject.SetActive(false);
 			negativeArrowGameObject.SetActive(false);
+		}
+
+		public void ResetEmoticons()
+		{
+			happyFaceIcon.SetActive(false);
+			neutralFaceIcon.SetActive(false);
+			cringeFaceIcon.SetActive(false);
+		}
+
+		public void CheckFinalScore()
+		{
+			if(currentScore > 0) happyFaceIcon.SetActive(true);
+			else if (currentScore < 0) cringeFaceIcon.SetActive(true);
+			else neutralFaceIcon.SetActive(true);
 		}
 	}
 }
