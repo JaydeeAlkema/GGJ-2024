@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts
 {
-	public class ActionsQueue : MonoBehaviour
+	public class GameManager : MonoBehaviour
 	{
 		[SerializeField, BoxGroup("References"), Expandable] private PlayerAction[] actions = null;
 		[SerializeField, BoxGroup("References")] private CrowdMember[] crowdMembers = null;
@@ -22,11 +22,11 @@ namespace Assets.Scripts
 		[Space]
 		[SerializeField, BoxGroup("Debugging")] private bool printCrowdMemberFinalScores = false;
 
-		private ActionsQueue instance = null;
+		private GameManager instance = null;
 		private event Action OnAction;
 		private Controls controls;
 
-		public ActionsQueue Instance { get => instance; }
+		public GameManager Instance { get => instance; }
 
 		private void Awake()
 		{
