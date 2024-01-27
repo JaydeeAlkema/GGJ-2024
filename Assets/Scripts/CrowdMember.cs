@@ -62,7 +62,6 @@ namespace Assets.Scripts
 			else if (score < 0) spriteRenderer.sprite = negativeFaces[UnityEngine.Random.Range(0, negativeFaces.Count)];
 			else spriteRenderer.sprite = neutralFaces[UnityEngine.Random.Range(0, neutralFaces.Count)];
 		}
-
 		public void ResetFaceToNeutral()
 		{
 			spriteRenderer.sprite = neutralFaces[UnityEngine.Random.Range(0, neutralFaces.Count)];
