@@ -522,7 +522,8 @@ MonoBehaviour:
   positiveArrowGameObject: {fileID: 51764068}
   neutralArrowGameObject: {fileID: 162455138}
   negativeArrowGameObject: {fileID: 1366662829}
-  score: 0
+  defaultScore: 0
+  currentScore: 0
   printScores: 0
 --- !u!4 &98090050
 Transform:
@@ -1109,7 +1110,8 @@ MonoBehaviour:
   positiveArrowGameObject: {fileID: 1493712381}
   neutralArrowGameObject: {fileID: 1290100036}
   negativeArrowGameObject: {fileID: 1320204489}
-  score: 0
+  defaultScore: 0
+  currentScore: 0
   printScores: 0
 --- !u!4 &271612729
 Transform:
@@ -1225,7 +1227,8 @@ MonoBehaviour:
   positiveArrowGameObject: {fileID: 1674813718}
   neutralArrowGameObject: {fileID: 477176102}
   negativeArrowGameObject: {fileID: 1628207978}
-  score: 0
+  defaultScore: 0
+  currentScore: 0
   printScores: 0
 --- !u!4 &306062647
 Transform:
@@ -1946,7 +1949,8 @@ MonoBehaviour:
   positiveArrowGameObject: {fileID: 2137053189}
   neutralArrowGameObject: {fileID: 505783415}
   negativeArrowGameObject: {fileID: 2007918762}
-  score: 0
+  defaultScore: 0
+  currentScore: 0
   printScores: 0
 --- !u!1 &619394800
 GameObject:
@@ -3296,7 +3300,8 @@ MonoBehaviour:
   positiveArrowGameObject: {fileID: 1688136489}
   neutralArrowGameObject: {fileID: 968561643}
   negativeArrowGameObject: {fileID: 1525051546}
-  score: 0
+  defaultScore: 0
+  currentScore: 0
   printScores: 0
 --- !u!1001 &1626346164
 PrefabInstance:
@@ -3883,7 +3888,8 @@ MonoBehaviour:
   positiveArrowGameObject: {fileID: 113421362}
   neutralArrowGameObject: {fileID: 1724344304}
   negativeArrowGameObject: {fileID: 197992045}
-  score: 0
+  defaultScore: 0
+  currentScore: 0
   printScores: 0
 --- !u!1 &1758544535
 GameObject:
@@ -4073,7 +4079,8 @@ MonoBehaviour:
   positiveArrowGameObject: {fileID: 685675718}
   neutralArrowGameObject: {fileID: 1626346166}
   negativeArrowGameObject: {fileID: 165447525}
-  score: 0
+  defaultScore: 0
+  currentScore: 0
   printScores: 0
 --- !u!1001 &1834202958
 PrefabInstance:
@@ -4374,7 +4381,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 866188741194263413, guid: 7cbce52399f8bad41980bd1a3a742cd7, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1519148141489339549, guid: 7cbce52399f8bad41980bd1a3a742cd7, type: 3}
       propertyPath: m_LocalPosition.x
