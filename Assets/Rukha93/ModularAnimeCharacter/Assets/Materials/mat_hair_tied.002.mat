@@ -121,7 +121,7 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 0
     - _Mask_Factor: 0.737
-    - _Metallic: 0.199
+    - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Outline_Thickness: 0.4
@@ -131,7 +131,7 @@ Material:
     - _ReceiveShadows: 1
     - _RimThickness: 0.5
     - _Smoothness: 1
-    - _SmoothnessMultiplier: 0.298
+    - _SmoothnessMultiplier: 0
     - _SmoothnessTextureChannel: 0
     - _Smoothstep_Factor: 0.844
     - _SpecularHighlights: 1
@@ -148,7 +148,7 @@ Material:
     - _Color: {r: 0.9056604, g: 0.9056604, b: 0.9056604, a: 1}
     - _Color_A: {r: 1, g: 1, b: 1, a: 0}
     - _Color_A_1: {r: 0.20754719, g: 0.20754719, b: 0.20754719, a: 1}
-    - _Color_A_2: {r: 0.31132078, g: 0.27414072, b: 0.26286048, a: 1}
+    - _Color_A_2: {r: 0.8113208, g: 0.6140667, b: 0.2985047, a: 1}
     - _Color_B: {r: 0.42938215, g: 0.5660378, b: 0.36578855, a: 0}
     - _Color_B_1: {r: 0, g: 0, b: 0, a: 1}
     - _Color_B_2: {r: 0, g: 0, b: 0, a: 1}

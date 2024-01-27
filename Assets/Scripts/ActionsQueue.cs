@@ -48,18 +48,12 @@ namespace Assets.Scripts
 
 		private void ResetCrowdMembers()
 		{
-			foreach (CrowdMember crowdMember in crowdMembers)
-			{
-				crowdMember.Score = 0;
-			}
+
 		}
 
 		private void GetFinalStatesOfCrowdMembers()
 		{
-			foreach (CrowdMember crowdMember in crowdMembers)
-			{
-				Debug.Log($"Final score of {crowdMember.name}: {crowdMember.Score}", this);
-			}
+
 		}
 	}
 }
