@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts
 {
@@ -233,9 +234,10 @@ namespace Assets.Scripts
 			ResetCrowdMembers();
 			if (currentLevel >= levels.Length)
 			{
-				currentLevel--;
-				ResetGame();
-				return;
+				SceneManager.LoadScene("Credits");
+				//currentLevel--;
+				//ResetGame();
+				//return;
 			}
 			winText.gameObject.SetActive(false);
 			loseText.gameObject.SetActive(false);
