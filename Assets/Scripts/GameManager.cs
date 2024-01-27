@@ -18,6 +18,7 @@ namespace Assets.Scripts
 		[SerializeField, BoxGroup("References")] private GameObject scoreTextAnchor = null;
 		[SerializeField, BoxGroup("References")] private TextMeshProUGUI scoreTextElement = null;
 		[SerializeField, BoxGroup("References")] private TextMeshProUGUI levelTextElement = null;
+		[SerializeField, BoxGroup("References")] private GameObject buttonsObjects;
 		[Space]
 		[SerializeField, BoxGroup("Runtime")] private int currentLevel = 0;
 		[SerializeField, BoxGroup("Runtime"), Expandable] private List<PlayerAction> actionsQueue = new();
@@ -108,6 +109,7 @@ namespace Assets.Scripts
 				yield return new WaitForSeconds(ducky.GetAnimator().GetCurrentAnimatorClipInfo(0).Length + 0.35f);
 				if (AllCrowdMembersAreHappy())
 				{
+					buttonsObjects.SetActive(false);
 					scoreTextAnchor.SetActive(true);
 					score += 10 * scoreMultiplier;
 					scoreTextElement.text = $"Score: {score}";
@@ -228,6 +230,7 @@ namespace Assets.Scripts
 			currentLevelTimer = levels[currentLevel].timeToCompleet;
 			isCountingDown = true;
 			levelTextElement.text = $"Level: {currentLevel + 1}";
+			buttonsObjects.SetActive(true);
 
 			for (int i = 0; i < levels.Length; i++)
 			{
