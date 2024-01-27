@@ -151,7 +151,7 @@ MonoBehaviour:
   positives: 01000000
   negatives: 0300000002000000
   score: 0
-  printScores: 1
+  printScores: 0
 --- !u!4 &98090050
 Transform:
   m_ObjectHideFlags: 0
@@ -199,7 +199,7 @@ MonoBehaviour:
   positives: 0000000002000000
   negatives: 03000000
   score: 0
-  printScores: 1
+  printScores: 0
 --- !u!4 &271612729
 Transform:
   m_ObjectHideFlags: 0
@@ -247,7 +247,7 @@ MonoBehaviour:
   positives: 0100000003000000
   negatives: 00000000
   score: 0
-  printScores: 1
+  printScores: 0
 --- !u!4 &306062647
 Transform:
   m_ObjectHideFlags: 0
@@ -560,14 +560,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   actions:
+  - {fileID: 11400000, guid: 96a0dc5510330f943b0a29f26dd0375e, type: 2}
   - {fileID: 11400000, guid: 4688c4752c96b634b90d7fd20b7b28ee, type: 2}
   - {fileID: 11400000, guid: 58d2f2655afb9114c8470ee29920e004, type: 2}
   - {fileID: 11400000, guid: 05750ea242aa8084385c86318384909f, type: 2}
-  - {fileID: 11400000, guid: 96a0dc5510330f943b0a29f26dd0375e, type: 2}
   crowdMembers:
   - {fileID: 271612728}
   - {fileID: 306062646}
   - {fileID: 98090049}
+  actionsQueue: []
+  currentActionQueueIndex: 0
+  maxActionsInQueue: 4
   printCrowdMemberFinalScores: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
