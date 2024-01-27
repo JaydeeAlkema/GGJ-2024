@@ -19,6 +19,7 @@ namespace Assets.Scripts
 		[SerializeField, BoxGroup("References")] private TextMeshProUGUI scoreTextElement = null;
 		[SerializeField, BoxGroup("References")] private TextMeshProUGUI levelTextElement = null;
 		[SerializeField, BoxGroup("References")] private GameObject buttonsObjects;
+		[SerializeField, BoxGroup("References")] private SFX sfx;
 		[Space]
 		[SerializeField, BoxGroup("Runtime")] private int currentLevel = 0;
 		[SerializeField, BoxGroup("Runtime"), Expandable] private List<PlayerAction> actionsQueue = new();
@@ -106,6 +107,11 @@ namespace Assets.Scripts
 				int scoreMultiplier = (int)currentLevelTimer;
 				if (AllCrowdMembersAreHappy()) isCountingDown = false;
 				PrintActionsQueue();
+				foreach (CrowdMember crowdmember in levels[currentLevel].crowdMembers)
+				{
+					crowdmember.CheckFinalScore();
+					crowdmember.ResetMoodIndicators();
+				}
 				yield return new WaitForSeconds(ducky.GetAnimator().GetCurrentAnimatorClipInfo(0).Length + 0.35f);
 				if (AllCrowdMembersAreHappy())
 				{
@@ -115,7 +121,10 @@ namespace Assets.Scripts
 					scoreTextElement.text = $"Score: {score}";
 					photoCameraAnimator.SetTrigger("doSnapCamera");
 					photoCameraFlashAnimator.SetTrigger("doFlash");
-					yield return new WaitForSeconds(photoCameraAnimator.GetCurrentAnimatorClipInfo(0).Length + 5f);
+					yield return new WaitForSeconds(0.5f);
+					sfx.PlaySFX(0);
+					sfx.PlaySFX(1);
+					yield return new WaitForSeconds(photoCameraAnimator.GetCurrentAnimatorClipInfo(0).Length + 3f);
 				}
 				else
 				{
@@ -184,6 +193,7 @@ namespace Assets.Scripts
 				crowdMember.SetScore(crowdMember.GetDefaultScore());
 				crowdMember.SetFacesToCurrentScore();
 				crowdMember.ResetMoodIndicators();
+				crowdMember.ResetEmoticons();
 			}
 			Debug.Log("Crowd members reset", this);
 		}
