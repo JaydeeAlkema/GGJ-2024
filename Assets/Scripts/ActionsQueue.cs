@@ -12,6 +12,7 @@ namespace Assets.Scripts
 		[SerializeField, BoxGroup("References"), Expandable] private PlayerAction[] actions = null;
 		[SerializeField, BoxGroup("References")] private CrowdMember[] crowdMembers = null;
 		[SerializeField, BoxGroup("References")] private Image[] iconHolders = null;
+		[SerializeField, BoxGroup("References")] private Ducky ducky;
 		[Space]
 		[SerializeField, BoxGroup("Runtime"), Expandable] private List<PlayerAction> actionsQueue = new();
 		[SerializeField, BoxGroup("Runtime")] private int currentActionQueueIndex = 0;
@@ -66,17 +67,23 @@ namespace Assets.Scripts
 			canInputActions = false;
 
 			actionsQueue.Add(playerAction);
+			ducky.SetAndResetTriggers(playerAction.GetAnimationString());
+
 			AddIconToCurrentIconHolder();
 			currentActionQueueIndex++;
 			TestSequence();
 			if (currentActionQueueIndex >= maxActionsInQueue)
 			{
 				PrintActionsQueue();
-				yield return new WaitForSeconds(1f);
+				yield return new WaitForSeconds(ducky.GetAnimator().GetCurrentAnimatorClipInfo(0).Length + 1f);
 				currentActionQueueIndex = 0;
 				actionsQueue.Clear();
 				ResetCrowdMembers();
 				ResetIcons();
+			}
+			else
+			{
+				yield return new WaitForSeconds(ducky.GetAnimator().GetCurrentAnimatorClipInfo(0).Length);
 			}
 			canInputActions = true;
 		}
@@ -93,7 +100,6 @@ namespace Assets.Scripts
 			}
 		}
 
-		[Button]
 		private void TestSequence()
 		{
 			SetupCrowdMembers();
