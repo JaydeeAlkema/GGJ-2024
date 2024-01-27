@@ -116,7 +116,7 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 0
     - _Mask_Factor: 0.525
-    - _Metallic: 0.064
+    - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 0
     - _Outline_Thickness: 0.4
@@ -127,7 +127,7 @@ Material:
     - _RimIntensity: 0.263
     - _RimThickness: 0.532
     - _Smoothness: 1
-    - _SmoothnessMultiplier: 1
+    - _SmoothnessMultiplier: 0
     - _SmoothnessTextureChannel: 0
     - _Smoothstep_Factor: 0.2
     - _SpecularHighlights: 1
