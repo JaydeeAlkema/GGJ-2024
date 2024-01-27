@@ -122,6 +122,7 @@ namespace Assets.Scripts
 			foreach (CrowdMember crowdMember in crowdMembers)
 			{
 				crowdMember.SetScore(0);
+				crowdMember.ResetFaceToNeutral();
 			}
 			Debug.Log("Crowd members reseted", this);
 		}
