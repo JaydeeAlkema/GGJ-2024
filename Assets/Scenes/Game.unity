@@ -595,7 +595,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!1001 &113421360
 PrefabInstance:
@@ -1110,7 +1110,7 @@ MonoBehaviour:
   positiveArrowGameObject: {fileID: 1493712381}
   neutralArrowGameObject: {fileID: 1290100036}
   negativeArrowGameObject: {fileID: 1320204489}
-  defaultScore: 0
+  defaultScore: -1
   currentScore: 0
   printScores: 0
 --- !u!4 &271612729
@@ -1183,7 +1183,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!1 &306062645
 GameObject:
@@ -1300,7 +1300,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!1 &326843787
 GameObject:
@@ -1923,7 +1923,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!114 &582447556
 MonoBehaviour:
@@ -2525,6 +2525,92 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45c7e8869c897cb418371aa242f592a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1262902954
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1262902955}
+  - component: {fileID: 1262902956}
+  m_Layer: 0
+  m_Name: Mask
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1262902955
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262902954}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.386, y: 0.2355, z: 0}
+  m_LocalScale: {x: 7.5396137, y: 4.8957505, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2016229768}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!331 &1262902956
+SpriteMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262902954}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 15d0c3709176029428a0da2f8cecf0b5, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_MaskAlphaCutoff: 0
+  m_FrontSortingLayerID: 0
+  m_BackSortingLayerID: 0
+  m_FrontSortingLayer: 0
+  m_BackSortingLayer: 0
+  m_FrontSortingOrder: 0
+  m_BackSortingOrder: 0
+  m_IsCustomRangeActive: 0
+  m_SpriteSortPoint: 0
+  m_MaskSource: 0
 --- !u!1001 &1290100034
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3274,7 +3360,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!114 &1533942386
 MonoBehaviour:
@@ -3300,7 +3386,7 @@ MonoBehaviour:
   positiveArrowGameObject: {fileID: 1688136489}
   neutralArrowGameObject: {fileID: 968561643}
   negativeArrowGameObject: {fileID: 1525051546}
-  defaultScore: 0
+  defaultScore: -1
   currentScore: 0
   printScores: 0
 --- !u!1001 &1626346164
@@ -3862,7 +3948,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!114 &1750801696
 MonoBehaviour:
@@ -3955,15 +4041,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1785732503}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.48, y: 1.22, z: 0}
-  m_LocalScale: {x: 0.99722385, y: 0.99722385, z: 0.99722385}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.5, y: 2.91, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1490159974}
   - {fileID: 1758544536}
-  - {fileID: 2016229768}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2016229768}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1815397147
 GameObject:
@@ -4053,7 +4138,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 1
   m_SpriteSortPoint: 0
 --- !u!114 &1815397150
 MonoBehaviour:
@@ -4079,7 +4164,7 @@ MonoBehaviour:
   positiveArrowGameObject: {fileID: 685675718}
   neutralArrowGameObject: {fileID: 1626346166}
   negativeArrowGameObject: {fileID: 165447525}
-  defaultScore: 0
+  defaultScore: 1
   currentScore: 0
   printScores: 0
 --- !u!1001 &1834202958
@@ -4369,7 +4454,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1785732504}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 866188741194263413, guid: 7cbce52399f8bad41980bd1a3a742cd7, type: 3}
       propertyPath: m_Size.x
@@ -4384,12 +4469,24 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1519148141489339549, guid: 7cbce52399f8bad41980bd1a3a742cd7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.99722385
+      objectReference: {fileID: 0}
+    - target: {fileID: 1519148141489339549, guid: 7cbce52399f8bad41980bd1a3a742cd7, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.99722385
+      objectReference: {fileID: 0}
+    - target: {fileID: 1519148141489339549, guid: 7cbce52399f8bad41980bd1a3a742cd7, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.99722385
+      objectReference: {fileID: 0}
+    - target: {fileID: 1519148141489339549, guid: 7cbce52399f8bad41980bd1a3a742cd7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.5
+      value: 4.9675074
       objectReference: {fileID: 0}
     - target: {fileID: 1519148141489339549, guid: 7cbce52399f8bad41980bd1a3a742cd7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.91
+      value: -1.6819215
       objectReference: {fileID: 0}
     - target: {fileID: 1519148141489339549, guid: 7cbce52399f8bad41980bd1a3a742cd7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4461,6 +4558,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1519148141489339549, guid: 7cbce52399f8bad41980bd1a3a742cd7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 326843788}
+    - targetCorrespondingSourceObject: {fileID: 1519148141489339549, guid: 7cbce52399f8bad41980bd1a3a742cd7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1262902955}
+    - targetCorrespondingSourceObject: {fileID: 1519148141489339549, guid: 7cbce52399f8bad41980bd1a3a742cd7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1785732504}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7cbce52399f8bad41980bd1a3a742cd7, type: 3}
 --- !u!4 &2016229768 stripped
@@ -4555,7 +4658,7 @@ SceneRoots:
   - {fileID: 51157770}
   - {fileID: 63990401}
   - {fileID: 904559936}
-  - {fileID: 1785732504}
+  - {fileID: 2016229767}
   - {fileID: 1088291362}
   - {fileID: 1364570785}
   - {fileID: 1465897259}
