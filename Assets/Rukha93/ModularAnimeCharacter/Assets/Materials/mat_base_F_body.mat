@@ -150,7 +150,7 @@ Material:
     - _SampleGI: 0
     - _Shininess: 0
     - _Smoothness: 0
-    - _SmoothnessMultiplier: 0.241
+    - _SmoothnessMultiplier: 0
     - _SmoothnessSource: 0
     - _SmoothnessTextureChannel: 0
     - _Smoothstep_Factor: 0.02
