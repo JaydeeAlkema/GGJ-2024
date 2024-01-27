@@ -15,6 +15,10 @@ namespace Assets.Scripts
 		[SerializeField, BoxGroup("References")] private List<Sprite> negativeFaces = new();
 		[SerializeField, BoxGroup("References")] private List<Sprite> neutralFaces = new();
 		[Space]
+		[SerializeField, BoxGroup("References")] private GameObject positiveArrowGameObject = null;
+		[SerializeField, BoxGroup("References")] private GameObject neutralArrowGameObject = null;
+		[SerializeField, BoxGroup("References")] private GameObject negativeArrowGameObject = null;
+		[Space]
 		[SerializeField, BoxGroup("Runtime")] private int score = 0;
 		[Space]
 		[SerializeField, BoxGroup("Debugging")] private bool printScores = false;
@@ -24,19 +28,33 @@ namespace Assets.Scripts
 
 		public void CheckPossitivesAndNegatives(List<PlayerActionType> actions)
 		{
+			ResetFaceToNeutral();
+			int oldScore = score;
 			foreach (PlayerActionType action in actions)
 			{
 				if (positives.Contains(action))
 				{
 					if (score != 1)
+					{
 						score++;
+						positiveArrowGameObject.SetActive(true);
+						neutralArrowGameObject.SetActive(false);
+						negativeArrowGameObject.SetActive(false);
+					}
 				}
 				else if (negatives.Contains(action))
 				{
 					if (score != -1)
+					{
 						score--;
+						positiveArrowGameObject.SetActive(false);
+						neutralArrowGameObject.SetActive(false);
+						negativeArrowGameObject.SetActive(true);
+					}
 				}
 			}
+
+			if (oldScore == score) neutralArrowGameObject.SetActive(true);
 
 			if (printScores) Debug.Log($"Checking positives and negatives at {gameObject.name} - Score: {score}", this);
 
@@ -48,6 +66,9 @@ namespace Assets.Scripts
 		public void ResetFaceToNeutral()
 		{
 			spriteRenderer.sprite = neutralFaces[UnityEngine.Random.Range(0, neutralFaces.Count)];
+			positiveArrowGameObject.SetActive(false);
+			neutralArrowGameObject.SetActive(false);
+			negativeArrowGameObject.SetActive(false);
 		}
 	}
 }
