@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Action 4
   m_EditorClassIdentifier: 
   animationString: doRoll
-  icon: {fileID: -8909137465544355272, guid: c64a3f3584308f6449d2b2e3cba22e38, type: 3}
+  icon: {fileID: 4976731139452907321, guid: 2e8b63ae745f76b4fb1a2f60942d662c, type: 3}
   playerActionTypes: 03000000
