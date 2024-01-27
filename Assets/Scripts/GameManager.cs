@@ -11,7 +11,7 @@ namespace Assets.Scripts
 	{
 		[SerializeField, BoxGroup("References"), Expandable] private PlayerAction[] actions = null;
 		[SerializeField, BoxGroup("References")] private CrowdMember[] crowdMembers = null;
-		[SerializeField, BoxGroup("References")] private Image[] iconHolders = null;
+		[SerializeField, BoxGroup("References")] private MoveFrame[] moveFrames = null;
 		[SerializeField, BoxGroup("References")] private Ducky ducky = null;
 		[SerializeField, BoxGroup("References")] private Animator photoCameraAnimator = null;
 		[Space]
@@ -45,6 +45,11 @@ namespace Assets.Scripts
 			controls.Enable();
 		}
 
+		private void Start()
+		{
+			SetNextMoveFrameAsSelected();
+		}
+
 		private void OnEnable()
 		{
 			controls.Player.Action1.performed += ctx => StartCoroutine(AddActionToQueue(actions[0]));
@@ -72,6 +77,7 @@ namespace Assets.Scripts
 
 			AddIconToCurrentIconHolder();
 			currentActionQueueIndex++;
+			SetNextMoveFrameAsSelected();
 			TestSequence();
 			if (currentActionQueueIndex >= maxActionsInQueue || AllCrowdMembersAreHappy())
 			{
@@ -92,15 +98,32 @@ namespace Assets.Scripts
 		}
 		private void AddIconToCurrentIconHolder()
 		{
-			iconHolders[currentActionQueueIndex].sprite = actionsQueue[^1].GetIcon();
+			moveFrames[currentActionQueueIndex].SetIcon(actionsQueue[^1].GetIcon());
+		}
+
+		// Method that always sets the next move frame as selected and all the other move frames as unselected
+		private void SetNextMoveFrameAsSelected()
+		{
+			foreach (MoveFrame iconHolder in moveFrames)
+			{
+				iconHolder.SetAsUnselected();
+			}
+			if (currentActionQueueIndex < maxActionsInQueue)
+			{
+				if (currentActionQueueIndex == 0) moveFrames[0].SetAsSelected();
+				else if (currentActionQueueIndex == maxActionsInQueue - 1) moveFrames[^1].SetAsSelected();
+				else moveFrames[currentActionQueueIndex].SetAsSelected();
+			}
 		}
 
 		private void ResetIcons()
 		{
-			foreach (Image iconHolder in iconHolders)
+			foreach (MoveFrame iconHolder in moveFrames)
 			{
-				iconHolder.sprite = null;
+				iconHolder.SetIcon(null);
+				iconHolder.SetAsUnselected();
 			}
+			SetNextMoveFrameAsSelected();
 		}
 
 		private void TestSequence()
