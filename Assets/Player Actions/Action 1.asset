@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Action 1
   m_EditorClassIdentifier: 
   animation: {fileID: 0}
+  icon: {fileID: 5044124483992705184, guid: 1226fe5265257de419d5d1617f9d549b, type: 3}
   playerActionTypes: 00000000

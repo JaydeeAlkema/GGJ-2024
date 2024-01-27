@@ -1,8 +1,9 @@
 using NaughtyAttributes;
-using NUnit.Framework;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assets.Scripts
 {
@@ -10,9 +11,11 @@ namespace Assets.Scripts
 	{
 		[SerializeField, BoxGroup("References"), Expandable] private PlayerAction[] actions = null;
 		[SerializeField, BoxGroup("References")] private CrowdMember[] crowdMembers = null;
+		[SerializeField, BoxGroup("References")] private Image[] iconHolders = null;
 		[Space]
 		[SerializeField, BoxGroup("Runtime"), Expandable] private List<PlayerAction> actionsQueue = new();
 		[SerializeField, BoxGroup("Runtime")] private int currentActionQueueIndex = 0;
+		[SerializeField, BoxGroup("Runtime")] private bool canInputActions = true;
 		[Space]
 		[SerializeField, BoxGroup("Settings")] private int maxActionsInQueue = 4;
 		[Space]
@@ -42,31 +45,51 @@ namespace Assets.Scripts
 
 		private void OnEnable()
 		{
-			controls.Player.Action1.performed += ctx => AddActionToQueue(actions[0]);
-			controls.Player.Action2.performed += ctx => AddActionToQueue(actions[1]);
-			controls.Player.Action3.performed += ctx => AddActionToQueue(actions[2]);
-			controls.Player.Action4.performed += ctx => AddActionToQueue(actions[3]);
+			controls.Player.Action1.performed += ctx => StartCoroutine(AddActionToQueue(actions[0]));
+			controls.Player.Action2.performed += ctx => StartCoroutine(AddActionToQueue(actions[1]));
+			controls.Player.Action3.performed += ctx => StartCoroutine(AddActionToQueue(actions[2]));
+			controls.Player.Action4.performed += ctx => StartCoroutine(AddActionToQueue(actions[3]));
 		}
 
 		private void OnDisable()
 		{
 			controls.Disable();
-			controls.Player.Action1.performed -= ctx => AddActionToQueue(actions[0]);
-			controls.Player.Action2.performed -= ctx => AddActionToQueue(actions[1]);
-			controls.Player.Action3.performed -= ctx => AddActionToQueue(actions[2]);
-			controls.Player.Action4.performed -= ctx => AddActionToQueue(actions[3]);
+			controls.Player.Action1.performed -= ctx => StartCoroutine(AddActionToQueue(actions[0]));
+			controls.Player.Action2.performed -= ctx => StartCoroutine(AddActionToQueue(actions[1]));
+			controls.Player.Action3.performed -= ctx => StartCoroutine(AddActionToQueue(actions[2]));
+			controls.Player.Action4.performed -= ctx => StartCoroutine(AddActionToQueue(actions[3]));
 		}
 
-		private void AddActionToQueue(PlayerAction playerAction)
+		private IEnumerator AddActionToQueue(PlayerAction playerAction)
 		{
+			if (!canInputActions) yield break;
+			canInputActions = false;
+
 			actionsQueue.Add(playerAction);
+			AddIconToCurrentIconHolder();
 			currentActionQueueIndex++;
 			TestSequence();
-			if (currentActionQueueIndex <= maxActionsInQueue)
+			if (currentActionQueueIndex >= maxActionsInQueue)
 			{
 				PrintActionsQueue();
+				yield return new WaitForSeconds(1f);
 				currentActionQueueIndex = 0;
 				actionsQueue.Clear();
+				ResetCrowdMembers();
+				ResetIcons();
+			}
+			canInputActions = true;
+		}
+		private void AddIconToCurrentIconHolder()
+		{
+			iconHolders[currentActionQueueIndex].sprite = actionsQueue[^1].GetIcon();
+		}
+
+		private void ResetIcons()
+		{
+			foreach (Image iconHolder in iconHolders)
+			{
+				iconHolder.sprite = null;
 			}
 		}
 
@@ -77,7 +100,6 @@ namespace Assets.Scripts
 			OnAction?.Invoke();
 			OnAction = null;
 			if (printCrowdMemberFinalScores) GetFinalStatesOfCrowdMembers();
-			ResetCrowdMembers();
 		}
 		private void SetupCrowdMembers()
 		{
@@ -95,6 +117,7 @@ namespace Assets.Scripts
 			{
 				crowdMember.SetScore(0);
 			}
+			Debug.Log("Crowd members reseted", this);
 		}
 		private void GetFinalStatesOfCrowdMembers()
 		{

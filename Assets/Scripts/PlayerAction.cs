@@ -16,11 +16,13 @@ namespace Assets.Scripts
 	public class PlayerAction : ScriptableObject
 	{
 		[SerializeField, BoxGroup("References")] private Animation animation = null;
+		[SerializeField, BoxGroup("References")] private Sprite icon = null;
 		[Space]
 		[SerializeField, BoxGroup("Settings")] private List<PlayerActionType> playerActionTypes = new();
 
 		public List<PlayerActionType> PlayerActionTypes { get => playerActionTypes; set => playerActionTypes = value; }
 
 		public Animation GetAnimation() => animation;
+		public Sprite GetIcon() => icon;
 	}
 }
