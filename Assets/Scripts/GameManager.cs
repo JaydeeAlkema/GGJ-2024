@@ -86,9 +86,16 @@ namespace Assets.Scripts
 			{
 				PrintActionsQueue();
 				yield return new WaitForSeconds(ducky.GetAnimator().GetCurrentAnimatorClipInfo(0).Length + 0.35f);
-				photoCameraAnimator.SetTrigger("doSnapCamera");
-				photoCameraFlashAnimator.SetTrigger("doFlash");
-				yield return new WaitForSeconds(photoCameraAnimator.GetCurrentAnimatorClipInfo(0).Length + 1f);
+				if (AllCrowdMembersAreHappy())
+				{
+					photoCameraAnimator.SetTrigger("doSnapCamera");
+					photoCameraFlashAnimator.SetTrigger("doFlash");
+					yield return new WaitForSeconds(photoCameraAnimator.GetCurrentAnimatorClipInfo(0).Length + 1f);
+				}
+				else
+				{
+					Debug.Log("Crowd members are not happy", this);
+				}
 				currentActionQueueIndex = 0;
 				actionsQueue.Clear();
 				if (AllCrowdMembersAreHappy()) NextLevel();
