@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 019771bf741e1194ebea7f9300c18c66, type: 3}
   m_Name: Action 2
   m_EditorClassIdentifier: 
-  animation: {fileID: 0}
-  icon: {fileID: 5792233493864853039, guid: 7e2579d75f3e41e4eb8bb26012279b64, type: 3}
+  animationString: doFlip
+  icon: {fileID: -5995316297036934644, guid: 61330460af5c2114b835c25908f977aa, type: 3}
   playerActionTypes: 01000000
