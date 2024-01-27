@@ -17,6 +17,8 @@ namespace Assets.Scripts
 		[SerializeField, BoxGroup("References")] private Animator photoCameraFlashAnimator = null;
 		[SerializeField, BoxGroup("References")] private GameObject scoreTextAnchor = null;
 		[SerializeField, BoxGroup("References")] private TextMeshProUGUI scoreTextElement = null;
+		[SerializeField, BoxGroup("References")] private TextMeshProUGUI loseText = null;
+		[SerializeField, BoxGroup("References")] private TextMeshProUGUI winText = null;
 		[SerializeField, BoxGroup("References")] private TextMeshProUGUI levelTextElement = null;
 		[SerializeField, BoxGroup("References")] private GameObject buttonsObjects;
 		[SerializeField, BoxGroup("References")] private SFX sfx;
@@ -117,6 +119,7 @@ namespace Assets.Scripts
 				{
 					buttonsObjects.SetActive(false);
 					scoreTextAnchor.SetActive(true);
+					winText.gameObject.SetActive(true);
 					score += 10 * scoreMultiplier;
 					scoreTextElement.text = $"Score: {score}";
 					photoCameraAnimator.SetTrigger("doSnapCamera");
@@ -128,7 +131,11 @@ namespace Assets.Scripts
 				}
 				else
 				{
+					loseText.gameObject.SetActive(true);
 					Debug.Log("Crowd members are not happy", this);
+					yield return new WaitForSeconds(3f);
+					loseText.gameObject.SetActive(false);
+					winText.gameObject.SetActive(false);
 				}
 				currentActionQueueIndex = 0;
 				actionsQueue.Clear();
@@ -236,6 +243,8 @@ namespace Assets.Scripts
 				ResetGame();
 				return;
 			}
+			winText.gameObject.SetActive(false);
+			loseText.gameObject.SetActive(false);
 			scoreTextAnchor.SetActive(false);
 			currentLevelTimer = levels[currentLevel].timeToCompleet;
 			isCountingDown = true;
