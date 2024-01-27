@@ -13,6 +13,7 @@ namespace Assets.Scripts
 		[SerializeField, BoxGroup("References")] private MoveFrame[] moveFrames = null;
 		[SerializeField, BoxGroup("References")] private Ducky ducky = null;
 		[SerializeField, BoxGroup("References")] private Animator photoCameraAnimator = null;
+		[SerializeField, BoxGroup("References")] private Animator photoCameraFlashAnimator = null;
 		[Space]
 		[SerializeField, BoxGroup("Runtime")] private int currentLevel = 0;
 		[SerializeField, BoxGroup("Runtime"), Expandable] private List<PlayerAction> actionsQueue = new();
@@ -86,6 +87,7 @@ namespace Assets.Scripts
 				PrintActionsQueue();
 				yield return new WaitForSeconds(ducky.GetAnimator().GetCurrentAnimatorClipInfo(0).Length + 0.35f);
 				photoCameraAnimator.SetTrigger("doSnapCamera");
+				photoCameraFlashAnimator.SetTrigger("doFlash");
 				yield return new WaitForSeconds(photoCameraAnimator.GetCurrentAnimatorClipInfo(0).Length + 1f);
 				currentActionQueueIndex = 0;
 				actionsQueue.Clear();
