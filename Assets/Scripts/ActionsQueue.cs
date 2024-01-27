@@ -62,7 +62,7 @@ namespace Assets.Scripts
 			actionsQueue.Add(playerAction);
 			currentActionQueueIndex++;
 			TestSequence();
-			if (currentActionQueueIndex == maxActionsInQueue)
+			if (currentActionQueueIndex <= maxActionsInQueue)
 			{
 				PrintActionsQueue();
 				currentActionQueueIndex = 0;
