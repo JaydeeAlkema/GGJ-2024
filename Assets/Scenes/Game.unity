@@ -3699,7 +3699,7 @@ MonoBehaviour:
   currentActionQueueIndex: 0
   canInputActions: 1
   currentLevelTimer: 0
-  isCountingDown: 1
+  currentScoreMultiplier: 60
   score: 0
   maxActionsInQueue: 4
   printCrowdMemberFinalScores: 1
