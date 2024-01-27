@@ -146,10 +146,11 @@ namespace Assets.Scripts
 		}
 		private void ResetCrowdMembers()
 		{
+			if (currentLevel >= levels.Length) return;
 			foreach (CrowdMember crowdMember in levels[currentLevel].crowdMembers)
 			{
-				crowdMember.SetScore(0);
-				crowdMember.ResetFaceToNeutral();
+				crowdMember.SetScore(crowdMember.GetDefaultScore());
+				crowdMember.SetFacesToCurrentScore();
 			}
 			Debug.Log("Crowd members reseted", this);
 		}
@@ -185,6 +186,7 @@ namespace Assets.Scripts
 		{
 			SetNextMoveFrameAsSelected();
 			currentLevel++;
+			ResetCrowdMembers();
 			if (currentLevel >= levels.Length)
 			{
 				currentLevel--;
