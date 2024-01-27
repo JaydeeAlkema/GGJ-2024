@@ -1,19 +1,25 @@
 fileFormatVersion: 2
-guid: 27fa80c596bc30744b1af4b1117a4995
+guid: c72e535eb3994874a86dc4d6dc041ee9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8296385383580801948
-    second: walk_0
+      213: 8358563238130269026
+    second: CameraSnapAnimation_0
   - first:
-      213: 3218353051568008401
-    second: walk_1
+      213: -138504608175000224
+    second: CameraSnapAnimation_1
   - first:
-      213: 6971375644381031630
-    second: walk_2
+      213: 7473002178411204758
+    second: CameraSnapAnimation_2
   - first:
-      213: -3714987382563562326
-    second: walk_3
+      213: 845357124306917181
+    second: CameraSnapAnimation_3
+  - first:
+      213: -6702884385967031206
+    second: CameraSnapAnimation_4
+  - first:
+      213: 4611322176729348637
+    second: CameraSnapAnimation_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -105,102 +111,131 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Windows Store Apps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: walk_0
+      name: CameraSnapAnimation_0
       rect:
         serializedVersion: 2
-        x: 17
-        y: 15
-        width: 25
-        height: 20
+        x: 1
+        y: 3
+        width: 30
+        height: 27
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4646ce323715ddc80800000000000000
-      internalID: -8296385383580801948
+      spriteID: 26bb461caf49ff370800000000000000
+      internalID: 8358563238130269026
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_1
+      name: CameraSnapAnimation_1
       rect:
         serializedVersion: 2
-        x: 81
-        y: 15
-        width: 26
-        height: 21
+        x: 33
+        y: 3
+        width: 30
+        height: 27
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1dc61808c03e9ac20800000000000000
-      internalID: 3218353051568008401
+      spriteID: 06579fdeacee31ef0800000000000000
+      internalID: -138504608175000224
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_2
+      name: CameraSnapAnimation_2
       rect:
         serializedVersion: 2
-        x: 146
-        y: 15
-        width: 27
-        height: 20
+        x: 65
+        y: 3
+        width: 30
+        height: 27
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ecc242f663d4fb060800000000000000
-      internalID: 6971375644381031630
+      spriteID: 6909be933ef65b760800000000000000
+      internalID: 7473002178411204758
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: walk_3
+      name: CameraSnapAnimation_3
       rect:
         serializedVersion: 2
-        x: 209
-        y: 15
-        width: 26
-        height: 21
+        x: 96
+        y: 3
+        width: 32
+        height: 27
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: aac9d3d88a6b17cc0800000000000000
-      internalID: -3714987382563562326
+      spriteID: d37d8ae53df4bbb00800000000000000
+      internalID: 845357124306917181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CameraSnapAnimation_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 3
+        width: 32
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5c3ce31a229af2a0800000000000000
+      internalID: -6702884385967031206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CameraSnapAnimation_5
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 3
+        width: 30
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1a75d08615beff30800000000000000
+      internalID: 4611322176729348637
       vertices: []
       indices: 
       edges: []
@@ -208,7 +243,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 205c28e2522eb544e8f977b61e2123b3
     internalID: 0
     vertices: []
     indices: 
@@ -216,10 +251,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      walk_0: -8296385383580801948
-      walk_1: 3218353051568008401
-      walk_2: 6971375644381031630
-      walk_3: -3714987382563562326
+      CameraSnapAnimation_0: 8358563238130269026
+      CameraSnapAnimation_1: -138504608175000224
+      CameraSnapAnimation_2: 7473002178411204758
+      CameraSnapAnimation_3: 845357124306917181
+      CameraSnapAnimation_4: -6702884385967031206
+      CameraSnapAnimation_5: 4611322176729348637
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
