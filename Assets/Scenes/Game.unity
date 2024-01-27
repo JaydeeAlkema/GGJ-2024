@@ -1440,6 +1440,7 @@ MonoBehaviour:
   - {fileID: 1748955555}
   - {fileID: 929097239}
   ducky: {fileID: 1088291363}
+  photoCameraAnimator: {fileID: 1775143798}
   actionsQueue: []
   currentActionQueueIndex: 0
   canInputActions: 1
@@ -2519,6 +2520,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1764712744}
   m_CullTransparentMesh: 1
+--- !u!95 &1775143798 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5058669666781123947, guid: 0714ce2f80e270541a16e0fdf6e438ca, type: 3}
+  m_PrefabInstance: {fileID: 1364570785}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1785732503
 GameObject:
   m_ObjectHideFlags: 0
