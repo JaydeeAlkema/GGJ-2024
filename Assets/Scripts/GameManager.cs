@@ -46,13 +46,11 @@ namespace Assets.Scripts
 			controls = new Controls();
 			controls.Enable();
 		}
-
 		private void Start()
 		{
 			SetNextMoveFrameAsSelected();
 			NextLevel();
 		}
-
 		private void Update()
 		{
 			currentLevelTimer += Time.deltaTime;
@@ -64,15 +62,15 @@ namespace Assets.Scripts
 				currentScoreMultiplier--;
 			}
 		}
-
 		private void OnEnable()
 		{
 			controls.Player.Action1.performed += ctx => StartCoroutine(AddActionToQueue(actions[0]));
 			controls.Player.Action2.performed += ctx => StartCoroutine(AddActionToQueue(actions[1]));
 			controls.Player.Action3.performed += ctx => StartCoroutine(AddActionToQueue(actions[2]));
 			controls.Player.Action4.performed += ctx => StartCoroutine(AddActionToQueue(actions[3]));
-		}
 
+			controls.UI.Escape.performed += ctx => QuitGame();
+		}
 		private void OnDisable()
 		{
 			controls.Disable();
@@ -80,6 +78,9 @@ namespace Assets.Scripts
 			controls.Player.Action2.performed -= ctx => StartCoroutine(AddActionToQueue(actions[1]));
 			controls.Player.Action3.performed -= ctx => StartCoroutine(AddActionToQueue(actions[2]));
 			controls.Player.Action4.performed -= ctx => StartCoroutine(AddActionToQueue(actions[3]));
+
+			controls.UI.Escape.performed -= ctx => QuitGame();
+
 		}
 
 		private IEnumerator AddActionToQueue(PlayerAction playerAction)
@@ -257,6 +258,10 @@ namespace Assets.Scripts
 			ResetIcons();
 			currentLevel = -1;
 			NextLevel();
+		}
+		private void QuitGame()
+		{
+			Application.Quit();
 		}
 	}
 

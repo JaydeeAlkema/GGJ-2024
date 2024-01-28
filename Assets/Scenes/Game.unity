@@ -3693,7 +3693,7 @@ MonoBehaviour:
   loseText: {fileID: 1559058271}
   winText: {fileID: 1024693596}
   levelTextElement: {fileID: 1320401492}
-  timerTextElement: {fileID: 959711043}
+  currentLevelTimerTextElement: {fileID: 959711043}
   buttonsObjects: {fileID: 169997185}
   sfx: {fileID: 765525355}
   currentLevel: -1
