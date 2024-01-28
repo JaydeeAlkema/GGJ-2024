@@ -28,12 +28,12 @@ namespace Assets.Scripts
 		[Space]
 		[SerializeField, BoxGroup("Runtime")] private int currentLevel = 0;
 		[SerializeField, BoxGroup("Runtime"), Expandable] private List<PlayerAction> actionsQueue = new();
-		[SerializeField, BoxGroup("Runtime")] private int currentActionQueueIndex = 0;
 		[SerializeField, BoxGroup("Runtime")] private bool canInputActions = true;
 		[SerializeField, BoxGroup("Runtime")] private float currentLevelTimer = 0;
-		[SerializeField, BoxGroup("Runtime")] private float currentScoreMultiplierTimer = 10;
-		[SerializeField, BoxGroup("Runtime")] private float currentScoreMultiplier = 10;
-		[SerializeField, BoxGroup("Runtime")] private int score = 0;
+		[SerializeField, BoxGroup("Runtime"), ProgressBar("Score ", 4, EColor.Blue)] private int currentActionQueueIndex = 0;
+		[SerializeField, BoxGroup("Runtime"), ProgressBar("Score Multiplier Time", 10f, EColor.Yellow)] private float currentScoreMultiplierTimer = 10;
+		[SerializeField, BoxGroup("Runtime"), ProgressBar("Score Multiplier", 10f, EColor.Indigo)] private float currentScoreMultiplier = 10;
+		[SerializeField, BoxGroup("Runtime"), ProgressBar("Score ", 200, EColor.Green)] private int score = 0;
 		[Space]
 		[SerializeField, BoxGroup("Settings")] private int maxActionsInQueue = 4;
 		[Space]
