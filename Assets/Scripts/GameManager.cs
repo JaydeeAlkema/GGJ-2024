@@ -71,7 +71,7 @@ namespace Assets.Scripts
 			controls.Player.Action3.performed += ctx => StartCoroutine(AddActionToQueue(actions[2]));
 			controls.Player.Action4.performed += ctx => StartCoroutine(AddActionToQueue(actions[3]));
 
-			controls.UI.Escape.performed += ctx => QuitGame();
+			controls.UI.DevHackMainMenu.performed += ctx => SceneManager.LoadScene("Main Menu");
 		}
 		private void OnDisable()
 		{
@@ -81,7 +81,7 @@ namespace Assets.Scripts
 			controls.Player.Action3.performed -= ctx => StartCoroutine(AddActionToQueue(actions[2]));
 			controls.Player.Action4.performed -= ctx => StartCoroutine(AddActionToQueue(actions[3]));
 
-			controls.UI.Escape.performed -= ctx => QuitGame();
+			controls.UI.DevHackMainMenu.performed -= ctx => SceneManager.LoadScene("Main Menu");
 
 		}
 

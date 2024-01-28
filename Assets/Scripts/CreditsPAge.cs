@@ -11,8 +11,16 @@ namespace Assets.Scripts
 		{
 			controls = new Controls();
 			controls.Enable();
+		}
 
+		private void OnEnable()
+		{
 			controls.UI.Escape.performed += ctx => Back();
+		}
+
+		private void OnDisable()
+		{
+			controls.UI.Escape.performed -= ctx => Back();
 		}
 
 		private void Back()

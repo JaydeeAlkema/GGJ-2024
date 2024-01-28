@@ -167,6 +167,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DevHackMainMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""cb1ec42a-2301-40a3-a305-48e64add17b2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -191,6 +200,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Escape"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""46c625a6-6d00-4a5c-a776-a1b0f58a23e1"",
+                    ""path"": ""<Keyboard>/m"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DevHackMainMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -206,6 +226,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Escape = m_UI.FindAction("Escape", throwIfNotFound: true);
+        m_UI_DevHackMainMenu = m_UI.FindAction("DevHackMainMenu", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -338,11 +359,13 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_UI;
     private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
     private readonly InputAction m_UI_Escape;
+    private readonly InputAction m_UI_DevHackMainMenu;
     public struct UIActions
     {
         private @Controls m_Wrapper;
         public UIActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Escape => m_Wrapper.m_UI_Escape;
+        public InputAction @DevHackMainMenu => m_Wrapper.m_UI_DevHackMainMenu;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -355,6 +378,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Escape.started += instance.OnEscape;
             @Escape.performed += instance.OnEscape;
             @Escape.canceled += instance.OnEscape;
+            @DevHackMainMenu.started += instance.OnDevHackMainMenu;
+            @DevHackMainMenu.performed += instance.OnDevHackMainMenu;
+            @DevHackMainMenu.canceled += instance.OnDevHackMainMenu;
         }
 
         private void UnregisterCallbacks(IUIActions instance)
@@ -362,6 +388,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Escape.started -= instance.OnEscape;
             @Escape.performed -= instance.OnEscape;
             @Escape.canceled -= instance.OnEscape;
+            @DevHackMainMenu.started -= instance.OnDevHackMainMenu;
+            @DevHackMainMenu.performed -= instance.OnDevHackMainMenu;
+            @DevHackMainMenu.canceled -= instance.OnDevHackMainMenu;
         }
 
         public void RemoveCallbacks(IUIActions instance)
@@ -389,5 +418,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     public interface IUIActions
     {
         void OnEscape(InputAction.CallbackContext context);
+        void OnDevHackMainMenu(InputAction.CallbackContext context);
     }
 }
