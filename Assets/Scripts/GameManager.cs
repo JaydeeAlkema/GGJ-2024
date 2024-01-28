@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts
 {
@@ -116,6 +117,7 @@ namespace Assets.Scripts
 					photoCameraFlashAnimator.SetTrigger("doFlash");
 					yield return new WaitForSeconds(0.5f);
 					sfx.PlaySFX(0);
+					yield return new WaitForSeconds(0.3f);
 					sfx.PlaySFX(1);
 					yield return new WaitForSeconds(photoCameraAnimator.GetCurrentAnimatorClipInfo(0).Length + 3f);
 				}
@@ -229,9 +231,10 @@ namespace Assets.Scripts
 			ResetCrowdMembers();
 			if (currentLevel >= levels.Length)
 			{
-				currentLevel--;
-				ResetGame();
-				return;
+				SceneManager.LoadScene("Credits");
+				//currentLevel--;
+				//ResetGame();
+				//return;
 			}
 			winText.gameObject.SetActive(false);
 			loseText.gameObject.SetActive(false);

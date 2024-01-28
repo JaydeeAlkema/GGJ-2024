@@ -17,7 +17,7 @@ namespace Assets.Scripts
 
 		private void Back()
 		{
-			SceneManager.LoadScene("MainMenu");
+			SceneManager.LoadScene("Main Menu");
 		}
 	}
 }
