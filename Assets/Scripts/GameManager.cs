@@ -121,6 +121,7 @@ namespace Assets.Scripts
 					photoCameraFlashAnimator.SetTrigger("doFlash");
 					yield return new WaitForSeconds(0.5f);
 					sfx.PlaySFX(0);
+					yield return new WaitForSeconds(0.3f);
 					sfx.PlaySFX(1);
 					yield return new WaitForSeconds(photoCameraAnimator.GetCurrentAnimatorClipInfo(0).Length + 3f);
 				}
