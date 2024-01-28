@@ -65,10 +65,10 @@ namespace Assets.Scripts
 					}
 				}
 			}
-
 			if (oldScore == currentScore) neutralArrowGameObject.SetActive(true);
 
-			if (printScores) Debug.Log($"Checking positives and negatives at {gameObject.name} - Score: {currentScore}", this);
+
+			if (printScores) Debug.Log($"Checking positives and negatives at {gameObject.name} - Score: {currentScore} - Oldscore: {oldScore}", this);
 
 			SetFacesToCurrentScore();
 		}

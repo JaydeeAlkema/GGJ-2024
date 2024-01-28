@@ -42,6 +42,7 @@ namespace Assets.Scripts
 		private event Action OnAction;
 		private Controls controls;
 
+
 		private void Awake()
 		{
 			controls = new Controls();
@@ -90,6 +91,7 @@ namespace Assets.Scripts
 			canInputActions = false;
 
 			actionsQueue.Add(playerAction);
+			if (ducky == null) ducky = FindAnyObjectByType<Ducky>();
 			ducky.SetAndResetTriggers(playerAction.GetAnimationString());
 
 			AddIconToCurrentIconHolder();
@@ -169,6 +171,7 @@ namespace Assets.Scripts
 		}
 		private void TestSequence()
 		{
+			Debug.Log("TEST SEQUENCE");
 			SetupCrowdMembers();
 			OnAction?.Invoke();
 			OnAction = null;
@@ -176,13 +179,12 @@ namespace Assets.Scripts
 		}
 		private void SetupCrowdMembers()
 		{
-			foreach (PlayerAction playerAction in actionsQueue)
-			{
 				foreach (CrowdMember crowdMember in levels[currentLevel].crowdMembers)
 				{
-					OnAction += () => crowdMember.CheckPossitivesAndNegatives(playerAction.PlayerActionTypes);
+					{
+						OnAction += () => crowdMember.CheckPossitivesAndNegatives(actionsQueue[actionsQueue.Count -1].PlayerActionTypes);
+					}
 				}
-			}
 		}
 		private void ResetCrowdMembers()
 		{
@@ -232,9 +234,6 @@ namespace Assets.Scripts
 			if (currentLevel >= levels.Length)
 			{
 				SceneManager.LoadScene("Credits");
-				//currentLevel--;
-				//ResetGame();
-				//return;
 			}
 			winText.gameObject.SetActive(false);
 			loseText.gameObject.SetActive(false);
@@ -252,15 +251,6 @@ namespace Assets.Scripts
 				else levelData.crowdParent.SetActive(false);
 			}
 			score = 0;
-		}
-		private void ResetGame()
-		{
-			actionsQueue.Clear();
-			currentActionQueueIndex = 0;
-			ResetCrowdMembers();
-			ResetIcons();
-			currentLevel = -1;
-			NextLevel();
 		}
 		private void QuitGame()
 		{
