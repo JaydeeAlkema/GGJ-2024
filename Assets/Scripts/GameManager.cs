@@ -230,11 +230,12 @@ namespace Assets.Scripts
 		{
 			SetNextMoveFrameAsSelected();
 			currentLevel++;
-			ResetCrowdMembers();
 			if (currentLevel >= levels.Length)
 			{
 				SceneManager.LoadScene("Credits");
+				return;
 			}
+			ResetCrowdMembers();
 			winText.gameObject.SetActive(false);
 			loseText.gameObject.SetActive(false);
 			scoreTextAnchor.SetActive(false);
