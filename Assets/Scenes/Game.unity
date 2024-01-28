@@ -4023,8 +4023,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sfxList:
-  - {fileID: 8300000, guid: 5c40cb03d67281840b1969305e56e456, type: 3}
-  - {fileID: 8300000, guid: 0aeee86a01f6dc44eb8d82af7aa105dd, type: 3}
+  - {fileID: 8300000, guid: b090c7886d193244687e145f03449103, type: 3}
+  - {fileID: 8300000, guid: 393b92239c9fc6b45a7491ce59713122, type: 3}
   audioSource: {fileID: 765525356}
 --- !u!82 &765525356
 AudioSource:
@@ -4035,7 +4035,7 @@ AudioSource:
   m_GameObject: {fileID: 765525351}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 2163264849661143458, guid: c9a6e2b13f42f984a9aae588ba93191b, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
@@ -5683,6 +5683,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PhotoCamera
       objectReference: {fileID: 0}
+    - target: {fileID: 2573169527224199402, guid: 0714ce2f80e270541a16e0fdf6e438ca, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 2928912187272421658, guid: c9a6e2b13f42f984a9aae588ba93191b, type: 2}
     - target: {fileID: 8651259763912034642, guid: 0714ce2f80e270541a16e0fdf6e438ca, type: 3}
       propertyPath: m_LocalScale.x
       value: 10
