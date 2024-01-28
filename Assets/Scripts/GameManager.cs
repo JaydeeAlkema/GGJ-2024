@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts
 {
@@ -21,6 +22,7 @@ namespace Assets.Scripts
 		[SerializeField, BoxGroup("References")] private TextMeshProUGUI loseText = null;
 		[SerializeField, BoxGroup("References")] private TextMeshProUGUI winText = null;
 		[SerializeField, BoxGroup("References")] private TextMeshProUGUI levelTextElement = null;
+		[SerializeField, BoxGroup("References")] private TextMeshProUGUI currentLevelTimerTextElement = null;
 		[SerializeField, BoxGroup("References")] private GameObject buttonsObjects;
 		[SerializeField, BoxGroup("References")] private SFX sfx;
 		[Space]
@@ -29,55 +31,47 @@ namespace Assets.Scripts
 		[SerializeField, BoxGroup("Runtime")] private int currentActionQueueIndex = 0;
 		[SerializeField, BoxGroup("Runtime")] private bool canInputActions = true;
 		[SerializeField, BoxGroup("Runtime")] private float currentLevelTimer = 0;
-		[SerializeField, BoxGroup("Runtime")] private float currentScoreMultiplier = 60;
+		[SerializeField, BoxGroup("Runtime")] private float currentScoreMultiplierTimer = 10;
+		[SerializeField, BoxGroup("Runtime")] private float currentScoreMultiplier = 10;
 		[SerializeField, BoxGroup("Runtime")] private int score = 0;
 		[Space]
 		[SerializeField, BoxGroup("Settings")] private int maxActionsInQueue = 4;
 		[Space]
 		[SerializeField, BoxGroup("Debugging")] private bool printCrowdMemberFinalScores = false;
 
-		private GameManager instance = null;
 		private event Action OnAction;
 		private Controls controls;
 
-		public GameManager Instance { get => instance; }
-
 		private void Awake()
 		{
-			if (instance == null)
-			{
-				instance = this;
-				DontDestroyOnLoad(gameObject);
-			}
-			else
-			{
-				Destroy(gameObject);
-			}
-
 			controls = new Controls();
 			controls.Enable();
 		}
-
 		private void Start()
 		{
 			SetNextMoveFrameAsSelected();
 			NextLevel();
 		}
-
 		private void Update()
 		{
 			currentLevelTimer += Time.deltaTime;
-			if (currentScoreMultiplier > 0) currentScoreMultiplier -= Time.deltaTime;
+			currentLevelTimerTextElement.text = $"Time: {math.floor(currentLevelTimer)}";
+			currentScoreMultiplierTimer -= Time.deltaTime;
+			if (currentScoreMultiplierTimer < 0)
+			{
+				currentScoreMultiplierTimer = 10;
+				currentScoreMultiplier--;
+			}
 		}
-
 		private void OnEnable()
 		{
 			controls.Player.Action1.performed += ctx => StartCoroutine(AddActionToQueue(actions[0]));
 			controls.Player.Action2.performed += ctx => StartCoroutine(AddActionToQueue(actions[1]));
 			controls.Player.Action3.performed += ctx => StartCoroutine(AddActionToQueue(actions[2]));
 			controls.Player.Action4.performed += ctx => StartCoroutine(AddActionToQueue(actions[3]));
-		}
 
+			controls.UI.Escape.performed += ctx => QuitGame();
+		}
 		private void OnDisable()
 		{
 			controls.Disable();
@@ -85,6 +79,9 @@ namespace Assets.Scripts
 			controls.Player.Action2.performed -= ctx => StartCoroutine(AddActionToQueue(actions[1]));
 			controls.Player.Action3.performed -= ctx => StartCoroutine(AddActionToQueue(actions[2]));
 			controls.Player.Action4.performed -= ctx => StartCoroutine(AddActionToQueue(actions[3]));
+
+			controls.UI.Escape.performed -= ctx => QuitGame();
+
 		}
 
 		private IEnumerator AddActionToQueue(PlayerAction playerAction)
@@ -114,12 +111,13 @@ namespace Assets.Scripts
 					buttonsObjects.SetActive(false);
 					scoreTextAnchor.SetActive(true);
 					winText.gameObject.SetActive(true);
-					score = Mathf.FloorToInt(currentScoreMultiplier / currentLevelTimer * 10);
+					score = (int)currentScoreMultiplier * (maxActionsInQueue - actionsQueue.Count + 1) * 10;
 					scoreTextElement.text = $"Score: {score}";
 					photoCameraAnimator.SetTrigger("doSnapCamera");
 					photoCameraFlashAnimator.SetTrigger("doFlash");
 					yield return new WaitForSeconds(0.5f);
 					sfx.PlaySFX(0);
+					yield return new WaitForSeconds(0.3f);
 					sfx.PlaySFX(1);
 					yield return new WaitForSeconds(photoCameraAnimator.GetCurrentAnimatorClipInfo(0).Length + 3f);
 				}
@@ -233,15 +231,17 @@ namespace Assets.Scripts
 			ResetCrowdMembers();
 			if (currentLevel >= levels.Length)
 			{
-				currentLevel--;
-				ResetGame();
-				return;
+				SceneManager.LoadScene("Credits");
+				//currentLevel--;
+				//ResetGame();
+				//return;
 			}
 			winText.gameObject.SetActive(false);
 			loseText.gameObject.SetActive(false);
 			scoreTextAnchor.SetActive(false);
 			currentLevelTimer = 0;
-			currentScoreMultiplier = 60;
+			currentScoreMultiplier = 10;
+			currentScoreMultiplierTimer = 10;
 			levelTextElement.text = $"Level: {currentLevel + 1}";
 			buttonsObjects.SetActive(true);
 
@@ -261,6 +261,10 @@ namespace Assets.Scripts
 			ResetIcons();
 			currentLevel = -1;
 			NextLevel();
+		}
+		private void QuitGame()
+		{
+			Application.Quit();
 		}
 	}
 
