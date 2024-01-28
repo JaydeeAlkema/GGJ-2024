@@ -21,6 +21,7 @@ namespace Assets.Scripts
 		[SerializeField, BoxGroup("References")] private TextMeshProUGUI loseText = null;
 		[SerializeField, BoxGroup("References")] private TextMeshProUGUI winText = null;
 		[SerializeField, BoxGroup("References")] private TextMeshProUGUI levelTextElement = null;
+		[SerializeField, BoxGroup("References")] private TextMeshProUGUI currentLevelTimerTextElement = null;
 		[SerializeField, BoxGroup("References")] private GameObject buttonsObjects;
 		[SerializeField, BoxGroup("References")] private SFX sfx;
 		[Space]
@@ -29,7 +30,8 @@ namespace Assets.Scripts
 		[SerializeField, BoxGroup("Runtime")] private int currentActionQueueIndex = 0;
 		[SerializeField, BoxGroup("Runtime")] private bool canInputActions = true;
 		[SerializeField, BoxGroup("Runtime")] private float currentLevelTimer = 0;
-		[SerializeField, BoxGroup("Runtime")] private float currentScoreMultiplier = 60;
+		[SerializeField, BoxGroup("Runtime")] private float currentScoreMultiplierTimer = 10;
+		[SerializeField, BoxGroup("Runtime")] private float currentScoreMultiplier = 10;
 		[SerializeField, BoxGroup("Runtime")] private int score = 0;
 		[Space]
 		[SerializeField, BoxGroup("Settings")] private int maxActionsInQueue = 4;
@@ -67,7 +69,13 @@ namespace Assets.Scripts
 		private void Update()
 		{
 			currentLevelTimer += Time.deltaTime;
-			if (currentScoreMultiplier > 0) currentScoreMultiplier -= Time.deltaTime;
+			currentLevelTimerTextElement.text = $"Time: {math.floor(currentLevelTimer)}";
+			currentScoreMultiplierTimer -= Time.deltaTime;
+			if (currentScoreMultiplierTimer < 0)
+			{
+				currentScoreMultiplierTimer = 10;
+				currentScoreMultiplier--;
+			}
 		}
 
 		private void OnEnable()
@@ -114,7 +122,7 @@ namespace Assets.Scripts
 					buttonsObjects.SetActive(false);
 					scoreTextAnchor.SetActive(true);
 					winText.gameObject.SetActive(true);
-					score = Mathf.FloorToInt(currentScoreMultiplier / currentLevelTimer * 10);
+					score = (int)currentScoreMultiplier * (maxActionsInQueue - actionsQueue.Count + 1) * 10;
 					scoreTextElement.text = $"Score: {score}";
 					photoCameraAnimator.SetTrigger("doSnapCamera");
 					photoCameraFlashAnimator.SetTrigger("doFlash");
@@ -241,7 +249,8 @@ namespace Assets.Scripts
 			loseText.gameObject.SetActive(false);
 			scoreTextAnchor.SetActive(false);
 			currentLevelTimer = 0;
-			currentScoreMultiplier = 60;
+			currentScoreMultiplier = 10;
+			currentScoreMultiplierTimer = 10;
 			levelTextElement.text = $"Level: {currentLevel + 1}";
 			buttonsObjects.SetActive(true);
 
