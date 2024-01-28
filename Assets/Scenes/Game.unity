@@ -665,8 +665,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eb4f8fc07b03c1418837751bb567f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  positives: 01000000
-  negatives: 03000000
+  positives: 0000000001000000
+  negatives: 02000000
   spriteRenderer: {fileID: 98090051}
   positiveFaces:
   - {fileID: -728611616165070505, guid: fceba7bad52e385489a5d12e8ee99d59, type: 3}
@@ -682,7 +682,7 @@ MonoBehaviour:
   cringeFaceIcon: {fileID: 747446205}
   defaultScore: 0
   currentScore: 0
-  printScores: 0
+  printScores: 1
 --- !u!4 &98090050
 Transform:
   m_ObjectHideFlags: 0
@@ -1603,7 +1603,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eb4f8fc07b03c1418837751bb567f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  positives: 0000000002000000
+  positives: 00000000
   negatives: 03000000
   spriteRenderer: {fileID: 271612730}
   positiveFaces:
@@ -1618,9 +1618,9 @@ MonoBehaviour:
   happyFaceIcon: {fileID: 2147292271}
   neutralFaceIcon: {fileID: 1379291262}
   cringeFaceIcon: {fileID: 896640533}
-  defaultScore: -1
+  defaultScore: 1
   currentScore: 0
-  printScores: 0
+  printScores: 1
 --- !u!4 &271612729
 Transform:
   m_ObjectHideFlags: 0
@@ -1726,7 +1726,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eb4f8fc07b03c1418837751bb567f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  positives: 0100000003000000
+  positives: 0300000002000000
   negatives: 00000000
   spriteRenderer: {fileID: 306062648}
   positiveFaces:
@@ -1743,7 +1743,7 @@ MonoBehaviour:
   cringeFaceIcon: {fileID: 1431564980}
   defaultScore: 0
   currentScore: 0
-  printScores: 0
+  printScores: 1
 --- !u!4 &306062647
 Transform:
   m_ObjectHideFlags: 0
@@ -3107,8 +3107,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eb4f8fc07b03c1418837751bb567f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  positives: 0000000002000000
-  negatives: 03000000
+  positives: 02000000
+  negatives: 
   spriteRenderer: {fileID: 582447555}
   positiveFaces:
   - {fileID: -728611616165070505, guid: 6ab1d618d8a82454c9b6bfacbc1a0ae3, type: 3}
@@ -5582,7 +5582,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8644939503444318563, guid: 734147637e59b284eb2cc02639b6466c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5858,8 +5858,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eb4f8fc07b03c1418837751bb567f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  positives: 0100000003000000
-  negatives: 00000000
+  positives: 0000000001000000
+  negatives: 02000000
   spriteRenderer: {fileID: 1533942385}
   positiveFaces:
   - {fileID: -728611616165070505, guid: 70cb8d375362b4b47a32566695cecbe2, type: 3}
@@ -5873,7 +5873,7 @@ MonoBehaviour:
   happyFaceIcon: {fileID: 1525734684}
   neutralFaceIcon: {fileID: 541753325}
   cringeFaceIcon: {fileID: 579053676}
-  defaultScore: -1
+  defaultScore: 0
   currentScore: 0
   printScores: 0
 --- !u!1 &1559058269
@@ -6663,8 +6663,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eb4f8fc07b03c1418837751bb567f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  positives: 01000000
-  negatives: 03000000
+  positives: 0000000003000000
+  negatives: 01000000
   spriteRenderer: {fileID: 1750801695}
   positiveFaces:
   - {fileID: -728611616165070505, guid: fceba7bad52e385489a5d12e8ee99d59, type: 3}
@@ -6859,8 +6859,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eb4f8fc07b03c1418837751bb567f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  positives: 030000000200000000000000
-  negatives: 01000000
+  positives: 0100000003000000
+  negatives: 0200000000000000
   spriteRenderer: {fileID: 1815397149}
   positiveFaces:
   - {fileID: -728611616165070505, guid: 91d95b343c9c95e4a871df98adb0113a, type: 3}
@@ -6874,7 +6874,7 @@ MonoBehaviour:
   happyFaceIcon: {fileID: 1667022970}
   neutralFaceIcon: {fileID: 25024541}
   cringeFaceIcon: {fileID: 322205987}
-  defaultScore: 1
+  defaultScore: -1
   currentScore: 0
   printScores: 0
 --- !u!1001 &1834202958
