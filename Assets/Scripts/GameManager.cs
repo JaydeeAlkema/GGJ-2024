@@ -38,24 +38,11 @@ namespace Assets.Scripts
 		[Space]
 		[SerializeField, BoxGroup("Debugging")] private bool printCrowdMemberFinalScores = false;
 
-		private GameManager instance = null;
 		private event Action OnAction;
 		private Controls controls;
 
-		public GameManager Instance { get => instance; }
-
 		private void Awake()
 		{
-			if (instance == null)
-			{
-				instance = this;
-				DontDestroyOnLoad(gameObject);
-			}
-			else
-			{
-				Destroy(gameObject);
-			}
-
 			controls = new Controls();
 			controls.Enable();
 		}
